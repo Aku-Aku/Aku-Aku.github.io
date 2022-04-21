@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Maths Game</title>
+</head>
+<body>
+    <center>
+    <h2>Maths Game</h2>
+  
+
+    <div id="highScore">High Score: 0</div>
+    <div id="currentScore">Current Score: 0</div>
+    <br>
+    <button id="startBtn" onclick="startGame()">START</button>
+    <div id="timeDisplay" hidden>Time left: 60</div>
+    <br>
+    
+    <br>
+    <div class="big" id="operation">0 * 0</div>
+    <br>
+    <button onclick="checkAnswer(1)" id="btn1">0</button>
+
+    <button onclick="checkAnswer(2)" id="btn2">0</button>
+
+    <button onclick="checkAnswer(3)" id="btn3">0</button>
+
+    <button onclick="checkAnswer(4)" id="btn4">0</button>
+    </center>
+
+    <audio id="myAudio" src="claps.mp3"></audio>
+
+<script>
+let timeLeft = 60;
+let timerInterval;
+let score = 0
+let highScore = 0
+let correctAnswer = 0
+
+var win = new Audio('audio-w.wav')
+var loss = new Audio('audio-l.wav')
+
+
+    window.onload = function()
+    {
+        let scoreFromBrowser = localStorage.getItem("highScore");
+        if (scoreFromBrowser != undefined) highScore = scoreFromBrowser;
+        document.getElementById("highScore").innerHTML = "High Score: " + highScore;
+
+    }
+
+
+        function startGame()
+        {
+            nextQuestion();
+
+            document.getElementById("startBtn").disabled = true;
+            
+
+            let timeDisplay = document.getElementById("timeDisplay");
+            timeDisplay.hidden = false;
+            timerInterval = setInterval(function(){
+                timeLeft -= 1;
+
+                timeDisplay.innerHTML = "Time Left: " + timeLeft;
+                if (timeLeft == 0)
+                {
+                    clearInterval(timerInterval);
+                    window.location.reload(false);
+                    document.getElementById("btn1").disabled = true;
+                    document.getElementById("btn2").disabled = true;
+                    document.getElementById("btn3").disabled = true;
+                    document.getElementById("btn4").disabled = true;
+                }
+            },1000)
+        }
+
+        function nextQuestion()
+        {
+            let operationDiv = document.getElementById("operation");
+            let firstNum = Math.ceil(Math.random() * 12);
+            let secondNum = Math.ceil(Math.random() * 12);
+            correctAnswer = firstNum * secondNum;
+            operationDiv.innerHTML = firstNum + "*" + secondNum;  
+
+            
+        
+        
+
+        let wrongAnswer1 = Math.ceil(Math.random() * 12) * Math.ceil(Math.random() * 12);
+        let wrongAnswer2 = Math.ceil(Math.random() * 12) * Math.ceil(Math.random() * 12);
+        let wrongAnswer3 = Math.ceil(Math.random() * 12) * Math.ceil(Math.random() * 12);
+        let wrongAnswer4 = Math.ceil(Math.random() * 12) * Math.ceil(Math.random() * 12);
+        
+        document.getElementById("btn1").innerHTML = wrongAnswer1;
+        document.getElementById("btn2").innerHTML = wrongAnswer2;
+        document.getElementById("btn3").innerHTML = wrongAnswer3;
+        document.getElementById("btn4").innerHTML = wrongAnswer4;
+        
+        let correctAnswerIndex = Math.floor(Math.random()*4)+1;
+        let correctAnswerID = "btn" + correctAnswerIndex;
+        document.getElementById(correctAnswerID).innerHTML = correctAnswer;
+
+    }
+
+    function checkAnswer(buttonIndex)
+    {
+        let answer = document.getElementById("btn" + buttonIndex).innerHTML;
+        if (answer == correctAnswer) score += 1; 
+
+        win.play();
+                    var gameTimer=setTimeout("audio-w.pause()", 1000);
+
+        
+
+        if (answer != correctAnswer)
+        
+        loss.play();
+        var gameTimer=setTimeout("audio-l.pause()", 1000);
+
+        
+
+
+        document.getElementById("currentScore").innerHTML = "Current Score: " + score;
+        if (score > highScore) highScore = score;
+        localStorage.setItem("highScore",highScore);
+        document.getElementById("highScore").innerHTML = "High Score: " + highScore;
+        nextQuestion();
+    }
+
+    
+
+</script>
+<style>
+body {
+    background-color: rgb(203, 253, 228);
+    font-family: sans-serif; 
+    font-size: 30px;
+    color: black;
+}
+h2, p {
+    border: 5px solid rgb(0, 0, 0);
+    width: 300px;
+}
+button {
+    font-size: 30px;
+    padding: 24px;
+    border: 5px solid rgb(0, 0, 0);
+    background-color: rgb(203, 253, 228);
+}
+
+button:hover {
+    background-color: aquamarine;
+}
+
+.big {
+    font-size: 30px;
+    padding: 24px;
+}
+</style>
+</body>
+</html>
