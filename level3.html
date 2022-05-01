@@ -105,15 +105,23 @@ var claps = new Audio('claps.mp3');
     {
         let answer = document.getElementById("btn" + buttonIndex).innerHTML;
         if (answer == correctAnswer) score += 1;
+
+win.play();
+                    var gameTimer=setTimeout("audio-w.pause()", 1000);
+
+        
+
+        if (answer != correctAnswer)
+        
+        loss.play();
+        var gameTimer=setTimeout("audio-l.pause()", 1000);
+
         document.getElementById("currentScore").innerHTML = "Current Score: " + score;
         if (score > highScore) highScore = score;
         localStorage.setItem("highScore",highScore);
         document.getElementById("highScore").innerHTML = "High Score: " + highScore;
 	    
-	    claps.play(); 
-	    
         nextQuestion();
-	   claps.pause();
     }
 	
 </script>
