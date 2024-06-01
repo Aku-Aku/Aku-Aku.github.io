@@ -9,7 +9,6 @@ Fun and engaging mathematics multiplication game designed for primary school chi
 - [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
 
@@ -59,8 +58,7 @@ This maths game is released under the MIT License.
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Sound Effects](https://freesound.org/)
 
 ---
 
-If you have any questions or feedback, please open an issue on the [GitHub repository](https://github.com/essinn.github.io/essinn).
+If you have any questions or feedback, please open an issue on the [GitHub repository](https://github.com/essinn/essinn.github.io).
