@@ -35,7 +35,7 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/essinn/essinn.git
+   git clone https://github.com/essinn/essinn.github.io.git
    cd essinn
    ```
 
@@ -63,4 +63,4 @@ This maths game is released under the MIT License.
 
 ---
 
-If you have any questions or feedback, please open an issue on the [GitHub repository](https://github.com/essinn/essinn).
+If you have any questions or feedback, please open an issue on the [GitHub repository](https://github.com/essinn.github.io/essinn).
