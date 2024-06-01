@@ -27,7 +27,7 @@ The maths multiplication game is made with HTML, CSS, and vanilla JavaScript. It
 
 ## Demo
 
-Check out a live demo of the game [here](Https://www.essinn.github.io/).
+Check out a live demo of the game [here](https://essinn.github.io/).
 
 ## Installation
 
